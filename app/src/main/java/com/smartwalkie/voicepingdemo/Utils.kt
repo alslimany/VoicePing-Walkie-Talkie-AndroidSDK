@@ -82,9 +82,9 @@ object Utils {
                     val fileName = split[split.size - 1]
                     val destinationPath =
                         context.getExternalFilesDir(null).toString() + "/" + fileName
-                    if (response.body() == null) return
+                    if (response.body == null) return
                     val fileOutputStream = FileOutputStream(destinationPath)
-                    fileOutputStream.write(response.body()!!.bytes())
+                    fileOutputStream.write(response.body!!.bytes())
                     fileOutputStream.close()
                     Log.d(TAG, "file downloaded to: $destinationPath")
                 }

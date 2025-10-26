@@ -1,18 +1,16 @@
-apply plugin: 'java'
+plugins {
+    id 'java-library'
+}
 
-//android {
-//    compileSdkVersion rootProject.compileSdkVersion
-//    buildToolsVersion rootProject.buildToolsVersion
-//}
-
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 
 dependencies {
-
-    compile ('com.googlecode.json-simple:json-simple:1.1.1') {
+    implementation ('com.googlecode.json-simple:json-simple:1.1.1') {
         exclude group: 'junit'
     }
-    compile 'org.javassist:javassist:3.18.1-GA'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'org.javassist:javassist:3.30.2-GA'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

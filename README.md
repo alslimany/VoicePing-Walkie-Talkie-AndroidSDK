@@ -14,6 +14,17 @@ VoicePing Android SDK is an Android library, provided by
 [Smart Walkie Talkie](http://www.smartwalkie.com), for enabling Push-To-Talk (PTT) functionality to
 your Android project. It allows you to quickly add group voice broadcast capability to your app. VoicePing Android SDK comes with a reference Android App (with UI) that demonstrates the one button Push-To-Talk interface.
 
+## 🎉 Now Compatible with Gradle 8.4 and Modern Android Development!
+
+The SDK has been upgraded to support:
+- ✅ Gradle 8.4
+- ✅ Android Gradle Plugin 8.3.2
+- ✅ Kotlin 2.0.0
+- ✅ Android SDK 34
+- ✅ Java 17
+
+**📖 See [QUICK_START.md](QUICK_START.md) for integration with your modern Android project!**
+
 ## Get Started
 
 You can test our sample app here: [Download VP Demo app](https://github.com/SmartWalkieOrg/VoicePingAndroidSDK/releases). The sample app allows you to test the Walkie Talkie function. You will need at least two android devices to test properly.  
@@ -21,8 +32,10 @@ You can input any user ID and company name. To communicate, devices should have 
 
 ## Documentation
 
-If you need more detailed info, you can have a look at [VoicePing walkie talkie Push-to-Talk (PTT) sdk documentation page](https://opensource.voiceping.info).  
-Check out the [Introduction](https://opensource.voiceping.info/docs/introduction) page for a quick review.
+- **[Quick Start Guide](QUICK_START.md)** - Integration guide for modern Android projects (Gradle 8.4+, Kotlin 2.0)
+- **[Gradle Upgrade Details](GRADLE_UPGRADE.md)** - Complete technical details of the Gradle 8.4 upgrade
+- **[VoicePing Documentation](https://opensource.voiceping.info)** - Full SDK documentation
+- **[Introduction](https://opensource.voiceping.info/docs/introduction)** - Quick review page
 
 ## Features of VoicePing Android SDK (Push-To-Talk)
 
@@ -31,7 +44,7 @@ Check out the [Introduction](https://opensource.voiceping.info/docs/introduction
 3. Works over all network conditions (2G, 3G, 4G or Wifi)
 4. Auto-reconnect feature when Internet connection is lost
 5. Uses secure WebSocket for transport
-6. Works for Android SDK (16 to 30) and Android OS version 4.1 to 11
+6. Works for Android SDK (21 to 34+) and Android OS version 5.0 to 14+
 7. Low battery consumption
 
 ## Use Cases (Add Group Walkie Talkie)
@@ -43,28 +56,41 @@ Check out the [Introduction](https://opensource.voiceping.info/docs/introduction
 
 ## Installation
 
-To install this SDK in your Android project, you need to do the following steps,
+### Requirements
+- Gradle 8.4 or higher
+- Android Gradle Plugin 8.3.2 (not 8.4.2 - it doesn't exist!)
+- Kotlin 2.0.0
+- Java 17
+- minSdk 21
+- compileSdk 34
 
-1. Add jitpack to your project-level gradle file:
+### Integration Steps
+
+1. Add jitpack to your `settings.gradle` or `settings.gradle.kts`:
 
     ```groovy
-    allprojects {
+    dependencyResolutionManagement {
         repositories {
-            ...
-            maven { url "https://jitpack.io" }
+            google()
+            mavenCentral()
+            maven { url = uri("https://jitpack.io") }
         }
     }
     ```
 
-2. Add the module on your module-level gradle file:
+2. Add the module dependency to your module-level gradle file:
 
     ```groovy
     dependencies {
-        implementation 'com.github.SmartWalkieOrg:VoicePing-Walkie-Talkie-AndroidSDK:1.0'
+        implementation 'com.github.SmartWalkieOrg:VoicePing-Walkie-Talkie-AndroidSDK:1.1'
     }
     ```
 
 3. Sync gradle and use it
+
+**📝 Note**: If you're using a version catalog (`libs.version.toml`), see [QUICK_START.md](QUICK_START.md) for detailed configuration.
+
+**⚠️ Important**: The AGP version should be **8.3.2** (not 8.4.2). AGP versions don't match Gradle versions!
 
 <div name="voiceping-router"></div>
 
@@ -96,7 +122,7 @@ VoicePing Enterprise has more features than VoicePing Open Source which can be f
 
 ### Multi Platform Support
 
-**[Android Supported](https://play.google.com/store/apps/details?id=com.media2359.voiceping.store):** Android 5 to Android 11 supported. With or Without Google Services.
+**[Android Supported](https://play.google.com/store/apps/details?id=com.media2359.voiceping.store):** Android 5 to Android 14+ supported. With or Without Google Services.
 
 **[iPhone Supported](https://itunes.apple.com/us/app/voiceping/id1249953303?ls=1&mt=8):** iPhone version available. Runs in Background to allow for Real Time receiving of PTT.
 

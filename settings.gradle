@@ -1,1 +1,9 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.google.com' }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+rootProject.name = "VoicePing-Walkie-Talkie-AndroidSDK"
 include ':app', ':voiceping-sdk'
