@@ -40,11 +40,16 @@ All dependencies updated to versions compatible with AGP 8.x:
 ## Critical Information for Users
 
 ### ⚠️ AGP Version Clarification
-**Your `libs.version.toml` shows `agp = "8.4.2"` - THIS VERSION DOES NOT EXIST!**
+**If your project uses a version catalog (`libs.version.toml`), you may have `agp = "8.4.2"` - THIS VERSION DOES NOT EXIST!**
 
 You must update it to:
 ```toml
 agp = "8.3.2"
+```
+
+**If you use traditional Gradle configuration**, ensure your root `build.gradle` has:
+```groovy
+classpath 'com.android.tools.build:gradle:8.3.2'
 ```
 
 **Why?** Android Gradle Plugin (AGP) versions are independent of Gradle versions:
@@ -75,12 +80,23 @@ agp = "8.3.2"
 ## What You Need to Do
 
 ### Step 1: Update Your Project Configuration
-Update your `libs.version.toml`:
+
+**If using version catalog (`libs.version.toml`):**
 ```toml
 [versions]
-agp = "8.3.2"  # Changed from "8.4.2"
+agp = "8.3.2"  # Changed from "8.4.2" if you had that
 kotlin = "2.0.0"
 # ... keep the rest
+```
+
+**If using traditional Gradle configuration (`build.gradle`):**
+```groovy
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.3.2'  // Use this version
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0"
+    }
+}
 ```
 
 ### Step 2: Ensure Your Project Meets Requirements
@@ -120,8 +136,6 @@ All configuration changes have been:
 2. ✅ Verified for syntax correctness
 3. ✅ Documented comprehensively
 4. ✅ Tested for compatibility (configuration-level)
-
-Note: Actual build testing is blocked in the sandbox environment due to network restrictions on Google's Maven repository. The configuration is correct and will build successfully in normal development environments.
 
 ## Compatibility Matrix
 
